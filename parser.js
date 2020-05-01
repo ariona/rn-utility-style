@@ -7,7 +7,11 @@ import Border     from './utilities/border'
 import Color      from './utilities/color'
 import Typography from './utilities/typography'
 import Position   from './utilities/position'
-import Width      from './utilities/width'
+import Sizing      from './utilities/sizing'
+import Opacity    from './utilities/opacity'
+import Transform    from './utilities/transform'
+import Interactivity from './utilities/interactivity'
+import Shadow from './utilities/shadow'
 
 /**
  * Parse Utility className into style
@@ -29,8 +33,12 @@ export const parseStyle = (key, config) => {
     ...Border( config ),
     ...Color( config ),
     ...Typography( config ),
-    ...Width( config ),
+    ...Sizing( config ),
+    ...Opacity( config ),
+    ...Transform( config ),
     ...Position,
+    ...Interactivity,
+    ...Shadow,
 
     // added user defined utils
     ...config.extra

@@ -118,8 +118,6 @@ function borderRadius(config) {
 
   } )
 
-  console.log( defs )
-
   return defs;
 
 }
@@ -153,7 +151,7 @@ function borderColor( config ) {
  * Combining all border definitions into one defs
  *
  * @param {object} Configuration object
- * @return {object} border definistion object
+ * @return {object} border definition object
  */
 export default function( config ) {
   const style = {

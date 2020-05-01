@@ -56,7 +56,7 @@ function marginDir(config) {
  * Combining all margin definitions into one defs
  *
  * @param {object} Configuration object
- * @return {object} margin definistion object
+ * @return {object} margin definition object
  */
 export default function( config ) {
   const style = {

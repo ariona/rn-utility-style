@@ -20,6 +20,28 @@ function FontWeight( config ) {
 }
 
 /**
+ * Generate fontWeight definition based on fontWeight config
+ *
+ * @param {object} Configuration object
+ * @return {object} fontWeight definition object
+ *
+ * @example
+ *
+ * FontWeight({fontWeight: {...}})
+ */
+function FontFamily( config ) {
+  const defs = {}
+  _map( config.fontFamily, (level, key) => {
+    _map( level, ( value, weight ) => {
+      defs[`font-${key}-${weight}`] = { fontFamily: value }
+    } )
+
+  } )
+
+  return defs;
+}
+
+/**
  * Generate fontSize definition based on fontSize config
  *
  * @param {object} Configuration object
@@ -80,10 +102,11 @@ function LineHeight( config ) {
  * Combining all typography definitions into one defs
  *
  * @param {object} Configuration object
- * @return {object} typography definistion object
+ * @return {object} typography definition object
  */
 export default function( config ) {
   const style = {
+    ...FontFamily( config ),
     ...FontWeight( config ),
     ...FontSize( config ),
     ...LetterSpacing( config ),

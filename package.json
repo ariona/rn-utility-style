@@ -2,6 +2,9 @@
   "name": "rn-utility-style",
   "version": "1.0.0",
   "description": "Utility styles for React Native",
+  "scripts": {
+    "test": "jest"
+  },
   "main": "index.js",
   "repository": "https://github.com/ariona/rn-utility-style.git",
   "author": "Ariona Rian <helloariona@gmail.com>",
@@ -11,6 +14,11 @@
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
+  
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-flow": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
+    "babel-jest": "^25.5.1",
     "jest": "^25.5.3",
     "react": "^16.13.1",
     "react-native": "^0.62.2"

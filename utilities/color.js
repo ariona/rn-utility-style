@@ -4,7 +4,7 @@ import _map from 'lodash.map'
  * Generate color definition for text-color & bg-color
  *
  * @param {object} Configuration object (colors)
- * @return {object} colors definistion object
+ * @return {object} colors definition object
  */
 function Color( config ) {
   const defs = {}
@@ -27,7 +27,7 @@ function Color( config ) {
     }
   } )
 
-  return defs;
+  return defs
 }
 
 export default function( config ) {

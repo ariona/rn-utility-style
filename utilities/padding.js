@@ -61,7 +61,7 @@ function paddingDir(config) {
  * Combining all padding definitions into one defs
  *
  * @param {object} Configuration object
- * @return {object} padding definistion object
+ * @return {object} padding definition object
  */
 export default function( config ) {
   const style = {

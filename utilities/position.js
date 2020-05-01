@@ -47,16 +47,4 @@ export default {
   'z-30' : { zIndex: 30 },
   'z-40' : { zIndex: 40 },
   'z-50' : { zIndex: 50 },
-
-  'elevation-0' : { elevation: 0 },
-  'elevation-1' : { elevation: 1 },
-  'elevation-2' : { elevation: 2 },
-  'elevation-3' : { elevation: 3 },
-  'elevation-4' : { elevation: 4 },
-  'elevation-5' : { elevation: 5 },
-  'elevation-6' : { elevation: 6 },
-  'elevation-7' : { elevation: 7 },
-  'elevation-8' : { elevation: 8 },
-  'elevation-9' : { elevation: 9 },
-  'elevation-10' : { elevation: 10 },
 }

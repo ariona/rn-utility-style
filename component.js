@@ -26,26 +26,43 @@ import { ThemeContext } from './provider'
  */
 export default function buildComponent(WrappedComponent) {
   return function ( {className, style, ...rest} ) {
-    const props = { ...rest, style: [] }
-
+    const props  = { ...rest, style: [] }
     const config = useContext(ThemeContext)
-  
+
     // If the component is Text, then apply config's font family & size
     if( WrappedComponent.displayName == "Text" ) {
       props.style.push({
-        fontFamily : config.fontFamily.sans,
+        fontFamily : config.fontFamily.primary.regular,
         fontSize   : config.baseFontSize
       })
     }
 
     // If the className has utility class value, let's parse it
     if ( className ) {
-      props.style.push( className.split(" ").map( c => parseStyle(c, config) ) );
+      let styles          = {}
+      let transform       = []
+
+      const parsedUtility = className.split(" ").map( c => parseStyle(c, config) );
+
+      // Lets combine transform property values
+      parsedUtility.map( rule => {
+        if ( rule.hasOwnProperty('transform') ) {
+          transform.push( rule.transform[0] )
+        } else {
+          styles = {...styles, ...rule}
+        }
+      } )
+      // extends transform if there is value
+      if ( transform.length ) {
+        props.style.push( {...styles, transform} )
+      } else {
+        props.style.push( {...styles} )
+      }
     }
 
 
     // If the style prop has value, let's push it.
-    // called last so it can override the utility classes style
+    // called last, so it can override the utility classes style
     if ( style ) {
       const inline = StyleSheet.create({ style })
       props.style.push( inline.style )
