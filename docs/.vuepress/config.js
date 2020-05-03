@@ -1,4 +1,5 @@
 module.exports = {
+  base: '/rn-utility-style/',
   title: 'RN Utility Style',
   description: 'Utility style framework for React Native',
   themeConfig: {
