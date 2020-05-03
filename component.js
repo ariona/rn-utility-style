@@ -27,13 +27,15 @@ import { ThemeContext } from './provider'
 export default function buildComponent(WrappedComponent) {
   return function ( {className, style, ...rest} ) {
     const props  = { ...rest, style: [] }
-    const config = useContext(ThemeContext)
+    const context = useContext(ThemeContext)
 
     // If the component is Text, then apply config's font family & size
     if( WrappedComponent.displayName == "Text" ) {
+      // const family = context.config.fontFamily
+      // console.log( context.config.fontFamily.primary.regular )
       props.style.push({
-        fontFamily : config.fontFamily.primary.regular,
-        fontSize   : config.baseFontSize
+        fontFamily : context.config.fontFamily.primary.regular,
+        fontSize   : context.config.baseFontSize
       })
     }
 
@@ -42,7 +44,7 @@ export default function buildComponent(WrappedComponent) {
       let styles          = {}
       let transform       = []
 
-      const parsedUtility = className.split(" ").map( c => parseStyle(c, config) );
+      const parsedUtility = className.split(" ").map( c => parseStyle(c, context.utilities) );
 
       // Lets combine transform property values
       parsedUtility.map( rule => {
