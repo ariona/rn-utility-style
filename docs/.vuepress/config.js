@@ -14,7 +14,7 @@ module.exports = {
         children: [
           '/guide/usage',
           '/guide/config',
-          '/guide/stylesheet',
+          '/guide/extract',
           '/guide/reference',
         ]
       },

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import {
   View as RNView,
   Text as RNText,
@@ -12,7 +12,7 @@ import {
   StyleSheet
 } from 'react-native'
 import { parseStyle } from './parser'
-import { ThemeContext } from './provider'
+import RNUtilityStyle from './config'
 
 /**
  * Create HOC from React Native Core component
@@ -27,15 +27,12 @@ import { ThemeContext } from './provider'
 export default function buildComponent(WrappedComponent) {
   return function ( {className, style, ...rest} ) {
     const props  = { ...rest, style: [] }
-    const context = useContext(ThemeContext)
 
     // If the component is Text, then apply config's font family & size
     if( WrappedComponent.displayName == "Text" ) {
-      // const family = context.config.fontFamily
-      // console.log( context.config.fontFamily.primary.regular )
       props.style.push({
-        fontFamily : context.config.fontFamily.primary.regular,
-        fontSize   : context.config.baseFontSize
+        fontFamily : RNUtilityStyle.config.fontFamily.primary.regular,
+        fontSize   : RNUtilityStyle.config.baseFontSize
       })
     }
 
@@ -44,7 +41,7 @@ export default function buildComponent(WrappedComponent) {
       let styles          = {}
       let transform       = []
 
-      const parsedUtility = className.split(" ").map( c => parseStyle(c, context.utilities) );
+      const parsedUtility = className.split(" ").map( c => parseStyle(c) );
 
       // Lets combine transform property values
       parsedUtility.map( rule => {

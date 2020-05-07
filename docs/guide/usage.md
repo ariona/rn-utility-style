@@ -1,22 +1,5 @@
 # Usage
 
-## Adding Utility Provider
-
-First we need to wrap the root of our app in utility provider. The Utility Provider is basicly a React Context Provider.
-
-```jsx
-import { UtilityProvider } from 'rn-utility-style'
-
-export default function RootComponent ( props ) {
-  retun (
-    <UtilityProvider>
-      /* your root app component */ 
-      <App />
-    </UtilityProvider>
-  )
-}
-```
-
 ## Core Component
 
 Instead of importing Core component from react-native library, you need to import it from `rn-utility-style`.
@@ -35,6 +18,24 @@ To use the utility style like tailwind you just need to pass your utility classe
   <Text className="text-gray-300 text-center">Hello, i am using RN Utility Style</Text>
 </View>
 ```
+
+## Custom Component
+If you have some component and need to be supported by RN Utility style, you can build it first.
+
+```jsx
+import { SafeAreaView as SaveView } from 'react-native'
+import { buildComponent } from 'rn-utility-style'
+
+const SafeAreaView = buildComponent( SaveView )
+
+<SafeAreaView className="flex-1 bg-gray-100">
+...
+</SafeAreaView>
+```
+
+On the example above, we import `SafeAreaView` and rename it to `SaveView`. Then we create a HOC using `buildComponent` function and store it in `SafeAreaView` variable.
+
+Now you can use the SafeAreaView component as usual but with the `rn-utility-style` support
 
 ## Advantage
 

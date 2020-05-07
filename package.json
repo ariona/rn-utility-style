@@ -7,6 +7,13 @@
     "docs:dev": "vuepress dev docs --host localhost",
     "docs:build": "vuepress build docs"
   },
+  "keywords": [
+    "react-native",
+    "utility",
+    "style",
+    "tailwind",
+    "framework"
+  ],
   "main": "index.js",
   "repository": "https://github.com/ariona/rn-utility-style.git",
   "author": "Ariona Rian <helloariona@gmail.com>",

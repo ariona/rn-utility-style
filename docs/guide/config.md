@@ -1,25 +1,30 @@
 # Configuration
 
-If you need to configure some of the default style, you can pass your configuration object to config property in your UtilityProvider.
+If you need to configure some of the default style, you can pass your configuration object to RNUtilityStyle.loadConfig method.
+
+You can place the configuration in your root file, something like `index.js` or `app.js`
 
 ```jsx
-import { UtilityProvider } from 'rn-utility-style'
+import RNUtilityStyle from 'rn-utility-style'
 
 const config = {
-  // your configuration
+  baseFontSize: 16,
+  fontFamily: {
+    primary: {
+      regular : "inter-regular",
+      bold    : "inter-bold"
+    }
+  }
 }
 
-<UtilityProvider config={config}>
-  // your root app component
-  <App />
-</UtilityProvider>
+RNUtilityStyle.loadConfig( config )
 ```
 
-For the list of configuration, you can check it out here [config.js](https://github.com/ariona/rn-utility-style/blob/master/config.js)
+For the full list of configuration, you can check it out here [config.js](https://github.com/ariona/rn-utility-style/blob/master/config.js)
 
 ## Overriding
 
-Let's say you are not happy with the fontSize generated from the utility. You can override it withing your config.
+Let's say you are not happy with the fontSize generated from the utility. You can override it within your config.
 
 ```js
 const config = {
@@ -39,25 +44,4 @@ const config = {
 }
 ```
 
-> Note that you need to copy the full value of the property and update which value you wanted.
-
-## Best Practice
-
-It's a best practice to create your configuration in it's own file, so we can import it anywhere in your app. this is related to our next topic.
-
-**config.js**
-```jsx
-export default {
-  baseFontSize: 14,
-  ...
-}
-```
-
-**App.js**
-```jsx
-import Config from './config.js'
-
-<UtilityProvider config={Config}>
-  ...
-</UtilityProvider>
-```
+> Note that you need to copy the full value of the property and update which value you want to update.

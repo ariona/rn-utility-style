@@ -31,9 +31,9 @@ function FontWeight( config ) {
  */
 function FontFamily( config ) {
   const defs = {}
-  _map( config.fontFamily, (level, key) => {
+  _map( config.fontFamily, (level, type) => {
     _map( level, ( value, weight ) => {
-      defs[`font-${key}-${weight}`] = { fontFamily: value }
+      defs[`font-${type}-${weight}`] = { fontFamily: value }
     } )
 
   } )

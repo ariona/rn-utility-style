@@ -1,7 +1,10 @@
-import UtilityProvider from './provider'
 import { apply }       from './parser'
 import buildComponent  from './component'
-import Config          from './config'
+import Defaults        from './default'
+import RNUtilityStyle  from './config'
+import _map from 'lodash.map'
+
+export default RNUtilityStyle;
 
 import {
   Text,
@@ -15,10 +18,37 @@ import {
   SectionList
 } from './component'
 
-// export Colors value from default config
-export const Colors = Config.colors
+/**
+ * Color function to get color value from config
+ *
+ * @param {string} color string key
+ * @return {string} color value
+ * 
+ * @example
+ * Colors("red-100")
+ */
+export const Colors = function( key ) {
+  const defs = {}
+
+  _map( RNUtilityStyle.config.colors, (value, key) => {
+    // check if the value is a single string value
+    if ( typeof value == "string" ) {
+
+      defs[`${key}`] = value
+
+    } else {
+    // if it does have object in it, let's map it again
+      _map( value, (colorValue, colorKey) => {
+        defs[`${key}-${colorKey}`] = colorValue
+      } )
+
+    }
+  } )
+
+  return defs[key];
+}
+
 export {
-  UtilityProvider,
   buildComponent,
   apply,
   View,
