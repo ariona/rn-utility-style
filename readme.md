@@ -21,7 +21,7 @@ This library adopt [Tailwind CSS framework](https://tailwindcss.com/) which is a
 **Import Core component from `rn-utility-style`**
 
 ```js
-import RNUtilityStyle, { buildComponent, View, Text, Image, Colors, apply } from 'rn-utility-style'
+import { View, Text, Image } from 'rn-utility-style'
 ```
 
 **Use utility class on className props just like on the web.**
